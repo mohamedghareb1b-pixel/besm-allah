@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - سوق فاقوس</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/admin.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 flex flex-col md:flex-row min-h-screen">
+
+    <aside class="bg-slate-900 text-white w-full md:w-64 p-6 flex flex-col shadow-xl">
+        <div class="mb-8 text-center border-b border-slate-700 pb-4">
+            <div class="text-3xl mb-1">🛒</div>
+            <h2 class="text-xl font-bold text-green-400">سوق فاقوس</h2>
+            <span class="text-xs text-slate-400">لوحة الإدارة السحابية</span>
+        </div>
+        <nav class="flex-1 space-y-2">
+            <a href="admin.html" class="flex items-center gap-2 w-full text-right px-4 py-3 bg-slate-800 text-white rounded-lg font-medium border-r-4 border-green-500">📦 الطلبات الواردة</a>
+            <a href="#" class="flex items-center gap-2 w-full text-right px-4 py-3 text-slate-300 hover:bg-slate-800 rounded-lg font-medium transition">🍎 إدارة المنتجات</a>
+            <a href="#" class="flex items-center gap-2 w-full text-right px-4 py-3 text-slate-300 hover:bg-slate-800 rounded-lg font-medium transition">⚙️ إعدادات المتجر</a>
+            <a href="index.html" target="_blank" class="flex items-center gap-2 w-full text-right px-4 py-3 text-slate-300 hover:bg-slate-800 rounded-lg font-medium transition">🌐 عرض المتجر</a>
+        </nav>
+        <div class="mt-auto pt-4 border-t border-slate-700">
+            <div class="flex items-center gap-2 text-xs text-slate-400">
+                <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                متصل لحظياً بالسيرفر
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-1 p-6 md:p-8 overflow-y-auto">
+        <header class="flex justify-between items-center mb-8 bg-white p-4 rounded-xl shadow-sm border-b">
+            <div>
+                <h1 class="text-2xl font-bold text-slate-800">📦 إدارة الطلبات</h1>
+                <p class="text-xs text-slate-400 mt-0.5">تحديث فوري عند وصول طلبات جديدة</p>
+            </div>
+
+            <div class="relative">
+                <button id="notif-btn" class="p-2 bg-slate-100 hover:bg-slate-200 rounded-full transition relative text-xl">
+                    🔔
+                    <span id="notif-count" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold hidden">0</span>
+                </button>
+                <div id="notif-dropdown" class="absolute left-0 mt-2 w-80 bg-white border rounded-xl shadow-2xl p-4 hidden z-50 max-h-96 overflow-y-auto">
+                    <h3 class="font-bold text-sm border-b pb-2 mb-2 text-slate-700">التنبيهات اللحظية</h3>
+                    <div id="notif-list" class="space-y-2 text-xs">
+                        <p class="text-gray-400 text-center py-2">لا توجد تنبيهات جديدة</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="bg-white rounded-xl shadow-sm overflow-hidden border">
+            <div class="p-5 border-b bg-slate-50 flex justify-between items-center">
+                <h3 class="font-bold text-slate-700">قائمة الطلبات الحالية</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                    محدث لحظياً
+                </span>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-right border-collapse">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-600 text-xs border-b">
+                            <th class="p-4 font-bold">رقم الطلب</th>
+                            <th class="p-4 font-bold">العميل</th>
+                            <th class="p-4 font-bold">العنوان</th>
+                            <th class="p-4 font-bold">المنتجات</th>
+                            <th class="p-4 font-bold">الإجمالي</th>
+                            <th class="p-4 font-bold">الحالة</th>
+                            <th class="p-4 font-bold">تغيير الحالة</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-rows-container" class="divide-y text-sm">
+                        <tr>
+                            <td colspan="7" class="p-8 text-center text-slate-400">
+                                <div class="flex items-center justify-center gap-2">
+                                    <svg class="animate-spin h-4 w-4 text-green-500" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                                    </svg>
+                                    جاري مزامنة الطلبات...
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/db.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
