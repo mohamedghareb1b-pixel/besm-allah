@@ -1,0 +1,48 @@
+/* style.css — سوق فاقوس */
+* { box-sizing: border-box; }
+
+#cart-modal { display: none; }
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Carousel - swipeable on mobile */
+.carousel-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 8px;
+}
+.carousel-wrapper::-webkit-scrollbar { display: none; }
+
+.carousel-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+}
+
+.product-card {
+    width: calc(50vw - 22px);
+    max-width: 200px;
+    min-width: 150px;
+    flex-shrink: 0;
+}
+
+/* Qty control */
+.qty-btn {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s;
+    -webkit-tap-highlight-color: transparent;
+}
+.qty-btn:active { background: #e2e8f0; transform: scale(0.92); }
+.qty-display { font-weight: bold; font-size: 13px; min-width: 40px; text-align: center; }
+
+input:focus, textarea:focus { outline: 2px solid #16a34a; outline-offset: 1px; }
