@@ -1,0 +1,103 @@
+/* style.css — سوق فاقوس */
+* { box-sizing: border-box; }
+
+#cart-modal { display: none; }
+
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Carousel - swipeable on mobile */
+.carousel-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 8px;
+    padding-left: 40px; /* بيخلي الكارت التالت يطل */
+}
+.carousel-wrapper::-webkit-scrollbar { display: none; }
+
+.carousel-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+}
+
+.product-card {
+    width: calc(45vw - 16px);
+    max-width: 180px;
+    min-width: 140px;
+    flex-shrink: 0;
+}
+
+/* Qty control */
+.qty-btn {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s;
+    -webkit-tap-highlight-color: transparent;
+}
+.qty-btn:active { background: #e2e8f0; transform: scale(0.92); }
+.qty-display { font-weight: bold; font-size: 13px; min-width: 40px; text-align: center; }
+
+input:focus, textarea:focus { outline: 2px solid #16a34a; outline-offset: 1px; }
+
+/* ===== ألوان سوق فاقوس ===== */
+:root {
+    --green-dark:  #3a7a1a;
+    --green-darker:#2d6014;
+    --gold:        #f5c518;
+    --gold-dark:   #d4a800;
+}
+
+/* Header */
+header { background-color: var(--green-dark) !important; }
+
+/* Cart button */
+#cart-btn { background-color: var(--green-darker) !important; }
+#cart-btn:hover { background-color: #1f4a0e !important; }
+
+/* Category active button */
+.cat-btn.bg-green-600,
+button.bg-green-600 {
+    background-color: var(--green-dark) !important;
+}
+
+/* Add to cart buttons */
+.bg-green-600 { background-color: var(--green-dark) !important; }
+.hover\:bg-green-700:hover { background-color: var(--green-darker) !important; }
+
+/* Product price */
+.text-green-600 { color: var(--green-dark) !important; }
+
+/* Cart count badge - gold */
+#cart-count {
+    background-color: var(--gold) !important;
+    color: #1a1a1a !important;
+    font-weight: 900 !important;
+}
+
+/* Submit button */
+#submit-order-btn {
+    background-color: var(--green-dark) !important;
+}
+#submit-order-btn:hover {
+    background-color: var(--green-darker) !important;
+}
+
+/* + button on card */
+.qty-btn.text-green-600 { color: var(--green-dark) !important; }
+
+/* Card qty active border */
+.border-green-300 { border-color: var(--gold) !important; }
+.bg-green-50 { background-color: #f0f9e8 !important; }
+.text-green-700 { color: var(--green-dark) !important; }
+
+/* Store name */
+#store-name { color: #ffffff; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
