@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوق فاقوس - المتجر الإلكتروني</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 pb-24">
+
+    <header class="bg-green-600 text-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 id="store-name" class="text-xl font-bold">سوق فاقوس</h1>
+            <button id="cart-btn" class="relative bg-green-700 hover:bg-green-800 px-3 py-2 rounded-lg flex items-center gap-2 transition">
+                <span>🛒 السلة</span>
+                <span id="cart-count" class="bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="px-3 mt-4">
+        <!-- Categories -->
+        <div id="categories-container" class="flex gap-2 overflow-x-auto pb-2 scrollbar-none mb-5">
+            <p class="text-xs text-gray-400">جاري التحميل...</p>
+        </div>
+
+        <!-- Products -->
+        <div id="products-main"></div>
+    </main>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/50 z-50 justify-end">
+        <div class="bg-white w-full max-w-md h-full flex flex-col shadow-2xl overflow-y-auto">
+            <div class="flex justify-between items-center border-b p-4 sticky top-0 bg-white z-10">
+                <h3 class="text-lg font-bold">🛒 سلة المشتريات</h3>
+                <button id="close-cart" class="text-gray-500 hover:text-red-500 text-2xl leading-none">&times;</button>
+            </div>
+
+            <div id="cart-items" class="p-4 space-y-3">
+                <p class="text-center text-gray-400 py-8">السلة فارغة حالياً</p>
+            </div>
+
+            <div class="border-t p-4 space-y-1 text-sm bg-gray-50 sticky bottom-0">
+                <div class="flex justify-between"><span>إجمالي المنتجات:</span><span id="subtotal-val">0.00 ج.م</span></div>
+                <div class="flex justify-between"><span>مصاريف التوصيل:</span><span id="delivery-val">0.00 ج.م</span></div>
+                <div class="flex justify-between font-bold text-base text-green-600 border-t pt-2"><span>الإجمالي الكلي:</span><span id="total-val">0.00 ج.م</span></div>
+            </div>
+
+            <div class="p-4 space-y-3">
+                <h4 class="font-bold text-gray-700 border-b pb-1">📍 بيانات التوصيل</h4>
+                <input type="text" id="order-fullname"    placeholder="الاسم بالكامل *"      class="w-full p-2.5 border rounded-lg text-sm">
+                <input type="tel"  id="order-whatsapp"    placeholder="رقم الواتساب *"       class="w-full p-2.5 border rounded-lg text-sm">
+                <input type="tel"  id="order-phone-extra" placeholder="رقم إضافي (اختياري)" class="w-full p-2.5 border rounded-lg text-sm">
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="text" id="order-zone"   placeholder="المنطقة / الحي *"     class="p-2.5 border rounded-lg text-sm">
+                    <input type="text" id="order-street" placeholder="اسم الشارع *"         class="p-2.5 border rounded-lg text-sm">
+                </div>
+                <input type="text" id="order-house" placeholder="رقم المنزل *" class="w-full p-2.5 border rounded-lg text-sm">
+                <input type="text" id="order-floor" placeholder="الدور (اختياري)" class="w-full p-2.5 border rounded-lg text-sm">
+                <input type="text" id="order-landmark" placeholder="علامة مميزة (اختياري)" class="w-full p-2.5 border rounded-lg text-sm">
+                <textarea id="order-notes" placeholder="ملاحظات إضافية..." rows="2" class="w-full p-2.5 border rounded-lg text-sm"></textarea>
+                <button id="submit-order-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl shadow transition text-base">
+                    ✅ تأكيد الطلب وإرساله
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/db.js"></script>
+    <script src="js/store.js"></script>
+</body>
+</html>
