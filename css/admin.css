@@ -1,0 +1,74 @@
+/* admin.css — لوحة التحكم */
+
+* { box-sizing: border-box; }
+
+/* Status badges */
+.status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.status-new {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.status-prep {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.status-delivery {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.status-done {
+    background: #dcfce7;
+    color: #15803d;
+}
+
+.status-cancel {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Table hover */
+tbody tr {
+    transition: background 0.1s;
+}
+
+/* Notification dropdown animation */
+#notif-dropdown {
+    animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+/* ===== ألوان سوق فاقوس - أدمن ===== */
+:root {
+    --green-dark:  #3a7a1a;
+    --green-darker:#2d6014;
+    --gold:        #f5c518;
+}
+
+.bg-green-600 { background-color: var(--green-dark) !important; }
+.hover\:bg-green-700:hover { background-color: var(--green-darker) !important; }
+.text-green-400 { color: var(--gold) !important; }
+.text-green-600 { color: var(--green-dark) !important; }
+.border-green-500 { border-color: var(--gold) !important; }
+.bg-green-100 { background-color: #e8f5e0 !important; }
+.text-green-800 { color: var(--green-darker) !important; }
+.text-green-700 { color: var(--green-dark) !important; }
+.bg-green-500 { background-color: var(--green-dark) !important; }
